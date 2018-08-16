@@ -161,7 +161,11 @@ module.exports = function math_plugin(md, options) {
     var katexInline = function(latex){
         options.displayMode = false;
         try{
-            return katex.renderToString(latex, options);
+            return (
+              '<span class="md-katex-o-st">$</span>' + 
+              katex.renderToString(latex, options) + 
+              '<span class="md-katex-c-st">$</span>'
+            );
         }
         catch(error){
             if(options.throwOnError){ console.log(error); }
@@ -176,7 +180,11 @@ module.exports = function math_plugin(md, options) {
     var katexBlock = function(latex){
         options.displayMode = true;
         try{
-            return "<p>" + katex.renderToString(latex, options) + "</p>";
+            return (
+              '<p><span class="md-katex-wrapper-st"><span class="md-katex-o-st">$$</span>' + 
+              katex.renderToString(latex, options) + 
+              '<span class="md-katex-c-st">$$</span></span></p>'
+            );
         }
         catch(error){
             if(options.throwOnError){ console.log(error); }
