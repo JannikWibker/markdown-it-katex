@@ -162,9 +162,9 @@ module.exports = function math_plugin(md, options) {
         options.displayMode = false;
         try{
             return (
-              '<span class="md-katex-o-st">$</span>' + 
+              '<span class="md--marks md-katex-o-st">$</span>' + 
               katex.renderToString(latex, options) + 
-              '<span class="md-katex-c-st">$</span>'
+              '<span class="md--marks md-katex-c-st">$</span>'
             );
         }
         catch(error){
@@ -181,9 +181,9 @@ module.exports = function math_plugin(md, options) {
         options.displayMode = true;
         try{
             return (
-              '<p><span class="md-katex-wrapper-st"><span class="md-katex-o-st">$$</span>' + 
+              '<p><span class="md-katex-wrapper-st"><span class="md--marks md-katex-o-st">$$</span>' + 
               katex.renderToString(latex, options) + 
-              '<span class="md-katex-c-st">$$</span></span></p>'
+              '<span class="md--marks md-katex-c-st">$$</span></span></p>'
             );
         }
         catch(error){
